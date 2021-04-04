@@ -1,0 +1,275 @@
+{
+  "description": "This is the product definition of EQTribe platform. Describes fields, screens, object collections and other components that make up EQTribe platform.",
+  "userRoles": {
+    "site admin": {
+      "name": "site admin",
+      "description": "Complete access to a site",
+      "canDo": [
+        "change home page",
+        "add new products"
+      ]
+    },
+    "site user": {
+      "name": "site user",
+      "description": "A registered user of your site. Can purchase on your site"
+    },
+    "vendor": {
+      "name": "vendor",
+      "description": "Suppliers whose products or services are sold on website"
+    }
+  },
+  "configurations": {
+    "description": "Configuraiton of a website on EQTribe platform",
+    "type": "object",
+    "properties": {
+      "mayaOrgName": {
+        "description": "Name of your business on EQTribe platform",
+        "type": "string"
+      },
+      "branding": {
+        "description": "Key branding elements",
+        "type": "object",
+        "properties": {
+          "brandName": {
+            "description": "The website name that appears in header, etc.",
+            "type": "string"
+          },
+          "logo": {
+            "description": "Path of the logo image file",
+            "type": "filePath"
+          },
+          "logoForWhiteBG": {
+            "description": "Path of a logo image file that is used when the background is white",
+            "type": "filePath"
+          },
+          "logoForMobileMenu": {
+            "description": "Path of a logo image file that is used on mobile screens. Usually a compact form of logo",
+            "type": "filePath"
+          },
+          "primaryColor": {
+            "description": "Primary color used on the site",
+            "type": "color"
+          }
+        }
+      },
+      "keyMessaging": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "topMessage": {
+            "description": "This text appears on the main panel on top of home page",
+            "type": "string",
+            "maxLength": 30
+          },
+          "detailStyle": {
+            "description": "",
+            "type": ""
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/imageSlide"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Business Objects": {
+    "product": {
+      "id": "",
+      "title": "Product",
+      "description": "EQTribe uses the object Product in a very generic sence. It could be anything that is to be showcased to site visitors or anything which could be sold. If you sell many items (like cakes, bags, food items, electrinic items, etc) that these could be configured to be sold. If you provide services (like home rennovation, healthcare services, tours, etc) then these could also be configured as products. If you just want to show the list of speakers or list of resumes or list of job descriptions to your audience and you like these pages to have similar formatting and similar sections, these could also be configured as products.",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "Name of your product, service or any oither item for which you have created this product class",
+          "type": "string",
+          "maxLength": 30
+        },
+        "uniqueCode": {
+          "title": "Unique Code",
+          "description": "This is generated automatically and is used by EQTribe platform to recognise the item. You can manually edit but it must be unique. In case of ecommerce, this could be SKU",
+          "type": "string",
+          "maxLength": 15
+        },
+        "shortDescription": {
+          "title": "Short Description",
+          "description": "",
+          "type": "string",
+          "maxLength": 150
+        },
+        "longDescription": {
+          "title": "Long Description",
+          "description": "",
+          "type": "string",
+          "maxLength": 1000
+        },
+        "category": {},
+        "copyDetailsFrom": {}
+      },
+      "actions": {
+        "create": {
+          "label": "Create",
+          "customisableLabel": true,
+          "action": "Saves the record in the database",
+          "notesForUser": [
+            "The saved record will be shown to others unless the item is published.",
+            "After the item is created, you can add and change a lot more data into it"
+          ],
+          "checksBySystem": [
+            "There should be no othet item with same unique code"
+          ]
+        },
+        "publish": {}
+      }
+    }
+  },
+  "glossary": {
+    "panel": {
+      "title": "",
+      "description": ""
+    },
+    "ProductClass": {
+      "title": "",
+      "description": ""
+    }
+  },
+  "How-to guides": {
+    "Add or edit a product": {
+      "view": "page",
+      "Description": "lorem ipsum lorem ipsum",
+      "Step-by-step Instructions": [
+        "2. as ankjsnsnjknjcndscdns",
+        "1. this ais asask kas kja skj"
+      ]
+    },
+    "Add or edit a category": {},
+    "Configure Your Website": {
+      "Description": "You will be surprised to know the depth and with of configurations in EQ Sites. Almost each and every aspect of the site is configurable. When you change a configuration for the site, its instantly visible on the website itself. While usually we start making a site as a clone of an existing website or templates made by EQTribe, its just a matter of changing these configuration that your site will take a unique character of its own.",
+      "Step-by-step Instructions": [
+        "Login to admin.eqtribe.com using your EQTribe account credentials",
+        "Ensure that you see your organisation name in top right corner. You can click on Switch Business in left menu to select right business.",
+        "Go to Left menu → EQSite Config → App Config",
+        "Search the configuration by writing the text shown currently on your site and edit any value"
+      ]
+    }
+  },
+  "screens": {
+    "website": {
+      "admin": {
+        "enquiries": {},
+        "categories": {},
+        "products": {},
+        "orders": {},
+        "invoices": {},
+        "digitalMarketing": {},
+        "customers": {},
+        "webcontentPages": {}
+      }
+    },
+    "EQTribe Admin": {
+      "Switch Business": {},
+      "App Config": {},
+      "Product Class Config": {}
+    }
+  },
+  "dataTypes": {
+    "description": "definitions of reusable data types for EQTribe Platform ",
+    "types": {
+      "color": {
+        "title": "Color",
+        "description": "Color code compliant with standard HTML color codes and color names defined in w3schools",
+        "readMore": "https://www.w3schools.com/colors/default.asp",
+        "primitiveJsonType": "string",
+        "default": "",
+        "examples": [
+          "#aa33cc",
+          "#ffffff",
+          "white",
+          "red",
+          "Aquamarine"
+        ]
+      },
+      "filePath": {
+        "title": "File Path",
+        "description": "Path of a file. This could be an image, PDF, MS Word, etc. While this can be any pub;ic path its recommended that the file is stored on AWS S3 for better site performance. Files fetched from other locations could slow down page loads and can reduce SEO ranking of the site",
+        "primitiveJsonType": "string",
+        "default": "",
+        "examples": [
+          "https://eqt-common-bucket.s3-us-west-2.amazonaws.com/runmyoffice/biz-51/Site/logo-white.png"
+        ]
+      },
+      "imageSlide": {
+        "title": "Image Slide",
+        "description": "One Slide of an Image Slider",
+        "properties": {
+          "url": {
+            "description": "Path of the image file",
+            "type": "filePath"
+          },
+          "sortOrder": {
+            "description": "Sequence in which images slide",
+            "type": "number"
+          },
+          "altText": {
+            "description": "Alternate text for an image, if the image cannot be displayed",
+            "type": "string",
+            "readMore": "https://www.w3schools.com/tags/att_img_alt.asp"
+          },
+          "imageFit": {
+            "description": "To specify how an image or video should be resized to fit its container.",
+            "type": "string",
+            "readMore": "https://www.w3schools.com/css/css3_object-fit.asp",
+            "enum": [
+              {
+                "value": "fill",
+                "description": "This is default. The image is resized to fill the given dimension. If necessary, the image will be stretched or squished to fit"
+              },
+              {
+                "value": "contain",
+                "description": ""
+              },
+              {
+                "value": "",
+                "description": "The image keeps its aspect ratio, but is resized to fit within the given dimension"
+              },
+              {
+                "value": "cover",
+                "description": "The image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit"
+              },
+              {
+                "value": "none",
+                "description": "The image is not resized"
+              },
+              {
+                "value": "scale-down",
+                "description": "the image is scaled down to the smallest version of none or contain"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Templates": [
+    {
+      "sampleProperty": {
+        "title": "",
+        "description": "",
+        "type": "",
+        "properties": {}
+      }
+    },
+    {
+      "sampleType": {
+        "title": "",
+        "description": "",
+        "readMore": "",
+        "primitiveJsonType": "",
+        "default": "",
+        "examples": []
+      }
+    }
+  ]
+}
